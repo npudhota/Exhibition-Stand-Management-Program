@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="717.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
+   <children>
+      <Label layoutX="51.0" layoutY="109.0" prefHeight="24.0" prefWidth="109.0" text="Enter stand length:" />
+      <Label layoutX="51.0" layoutY="142.0" prefHeight="47.0" prefWidth="102.0" text="Enter stand width:" />
+       <TextField fx:id="lengthInput" layoutX="161.0" layoutY="108.0" prefHeight="26.0" prefWidth="38.0" />
+      <TextField fx:id="widthInput" layoutX="161.0" layoutY="152.0" prefHeight="26.0" prefWidth="38.0" />
+
+      <Button fx:id="calculateBtn" layoutX="80.0" layoutY="216.0" mnemonicParsing="false" onAction="#calculateBtnPressed" text="Calculate" />
+      <VBox layoutX="253.0" layoutY="96.0" spacing="10.0">
+         <children>
+            <Label fx:id="numOfPanelsLabel" prefHeight="18.0" prefWidth="126.0" text="Number of Panels:" />
+            <Label fx:id="numOfVSLabel" prefHeight="18.0" prefWidth="175.0" text="Number of Vertical Supports:" />
+            <Label fx:id="numOfHSLabel" prefHeight="18.0" prefWidth="190.0" text="Number of Horizontal Supports:" />
+         </children>
+      </VBox>
+      <VBox layoutX="249.0" layoutY="204.0" spacing="10.0">
+         <children>
+            <Label fx:id="totalNumOfPanelsLabel" text="Total number of Panels:" />
+            <Label fx:id="totalNumOfVSLabel" text="Total number of Vertical Supports:" />
+            <Label fx:id="totalNumOfHSLabel" text="Total number of Horizontal Supports:" />
+         </children>
+      </VBox>
+      <MenuBar layoutY="1.0" prefHeight="26.0" prefWidth="717.0">
+        <menus>
+          <Menu mnemonicParsing="false" text="File">
+            <items>
+              <MenuItem mnemonicParsing="false" text="Close" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Edit">
+            <items>
+              <MenuItem fx:id="clearMenuOption" mnemonicParsing="false" onAction="#clearOptionPressed" text="Clear" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Help">
+            <items>
+              <MenuItem mnemonicParsing="false" text="About" />
+            </items>
+          </Menu>
+        </menus>
+      </MenuBar>
+      <ListView fx:id="listView" layoutX="526.0" layoutY="68.0" prefHeight="241.0" prefWidth="158.0" />
+   </children>
+</AnchorPane>
