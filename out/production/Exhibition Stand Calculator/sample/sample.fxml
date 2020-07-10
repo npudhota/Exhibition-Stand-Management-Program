@@ -44,6 +44,6 @@
           </Menu>
         </menus>
       </MenuBar>
-      <ListView fx:id="listView" layoutX="526.0" layoutY="68.0" prefHeight="241.0" prefWidth="158.0" />
+      <ListView fx:id="listView" layoutX="513.0" layoutY="68.0" prefHeight="241.0" prefWidth="158.0" />
    </children>
 </AnchorPane>

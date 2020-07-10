@@ -69,6 +69,8 @@ public class Controller {
         totalNumOfPanels = 0;
         totalNumOfHS = 0;
         totalNumOfVS = 0;
+        stands.clear();
+        listView.getItems().clear();
 
         lengthInput.setText("");
         widthInput.setText("");
