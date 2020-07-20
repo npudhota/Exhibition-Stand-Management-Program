@@ -3,9 +3,7 @@ package sample;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
-import javafx.scene.control.Label;
-import javafx.scene.control.ListView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 
 import java.util.ArrayList;
 
@@ -27,7 +25,7 @@ public class Controller {
     int totalNumOfPanels;
     int totalNumOfVS;
     int totalNumOfHS;
-    ArrayList <String> stands = new ArrayList<String>();
+    ArrayList<String> stands = new ArrayList<String>();
 
     public void calculateBtnPressed(ActionEvent actionEvent) {
         String standLengthString = lengthInput.getText();
@@ -45,7 +43,8 @@ public class Controller {
         totalNumOfVS += numOfVS;
         totalNumOfHS += numOfHS;
 
-      //  Stand stand1 = new Stand(standLength, standWidth);
+        // Stand i = new Stand(standLength, standWidth);
+        // System.out.println(stand1.length + " " + stand1.width);
 
         numOfPanelsLabel.setText("Number of Panels: " + numOfPanels);
         numOfVSLabel.setText("Number of Vertical Supports: " + numOfVS);
@@ -58,7 +57,7 @@ public class Controller {
         lengthInput.setText("");
         widthInput.setText("");
 
-        ObservableList<String> items = FXCollections.observableArrayList (stands);
+        ObservableList<String> items = FXCollections.observableArrayList(stands);
         listView.setItems(items);
     }
 
@@ -80,5 +79,35 @@ public class Controller {
         totalNumOfPanelsLabel.setText("Total number of Panels: ");
         totalNumOfVSLabel.setText("Total number of Vertical Supports: ");
         totalNumOfHSLabel.setText("Total number of Horizontal Supports: ");
+    }
+
+    public void deleteBtnPressed(ActionEvent actionEvent) {
+        int selectedItem = listView.getSelectionModel().getSelectedIndex();
+        String selectedStand = stands.get(selectedItem);
+
+        String selectedStandLengthStr = selectedStand.substring(0, selectedStand.length() - 4);
+        String selectedStandWidthStr = selectedStand.substring(4);
+        int selectedStandLength = Integer.parseInt(selectedStandLengthStr);
+        int selectedStandWidth = Integer.parseInt(selectedStandWidthStr);
+
+        int numOfPanelsToRemove = selectedStandLength + (selectedStandWidth * 2);
+        int numOfVSToRemove = numOfPanelsToRemove + 1;
+        int numOfHSToRemove = numOfPanelsToRemove * 2;
+
+        totalNumOfPanels -= numOfPanelsToRemove;
+        totalNumOfVS -= numOfVSToRemove;
+        totalNumOfHS -= numOfHSToRemove;
+
+        stands.remove(selectedItem);
+        System.out.println(stands);
+        ObservableList<String> items = FXCollections.observableArrayList(stands);
+        listView.setItems(items);
+
+        totalNumOfPanelsLabel.setText("Total number of Panels: " + totalNumOfPanels);
+        totalNumOfVSLabel.setText("Total number of Vertical Supports: " + totalNumOfVS);
+        totalNumOfHSLabel.setText("Total number of Horizontal Supports: " + totalNumOfHS);
+        numOfPanelsLabel.setText("Number of Panels: ");
+        numOfVSLabel.setText("Number of Vertical Supports: ");
+        numOfHSLabel.setText("Number of Horizontal Supports: ");
     }
 }
